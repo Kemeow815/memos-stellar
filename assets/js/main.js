@@ -4,13 +4,13 @@
 
 // Memos Start
 var memo = {
-    host: 'https://memos.050815.xyz/',
+    host: 'http://memos.050815.xyz/',
     limit: '10',
     creatorId: '1',
     domId: '#memos',
     username: 'kemiao',
     name: '克喵爱吃卤面',
-    APIVersion: 'new',
+    APIVersion: 'lagacy',
     language: 'zh-CN',
     total: true,
     doubanAPI: '',
@@ -29,9 +29,9 @@ var memos = memo.host.replace(/\/$/, '')
 let memoUrl;
 if (memo.APIVersion === 'new') {
     const filter = `creator=='users/${memo.creatorId}'&&visibilities==['PUBLIC']`;
-    memoUrl = `${memos}/api/v1/users:username?username=${memo.username}`;
+    memoUrl = `${memos}/api/v1/memos?filter=${encodeURIComponent(filter)}&view=MEMO_VIEW_FULL`;
 } else if (memo.APIVersion === 'legacy') {
-    memoUrl = memos + "/api/v1/memo?creatorId=" + memo.creatorId + "&rowStatus=NORMAL";
+    memoUrl = memos + "/api/v1/users:username?username=${config.memosUsername}";
 } else {
     throw new Error('Invalid APIVersion');
 }
@@ -461,7 +461,7 @@ function getTotal() {
                 console.error('Error fetching memos:', err);
             });
     } else if (memo.APIVersion === 'legacy') {
-        totalUrl = `${memos}/api/v1/memo/stats?creatorId=${memo.creatorId}`;
+        totalUrl = `${memos}/api/v1/users:username?username=${config.memosUsername}`;
         fetch(totalUrl)
             .then(res => res.json())
             .then(resdata => {
