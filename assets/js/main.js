@@ -4,7 +4,7 @@
 
 // Memos Start
 var memo = {
-    host: 'https://memos.050815.xyz/',
+    host: 'https://memos.050815.xyz',
     limit: '10',
     creatorId: '1',
     domId: '#memos',
@@ -31,7 +31,7 @@ if (memo.APIVersion === 'new') {
     const filter = `creator=='users/${memo.creatorId}'&&visibilities==['PUBLIC']`;
     memoUrl = `${memos}/api/v1/memos?filter=${encodeURIComponent(filter)}&view=MEMO_VIEW_FULL`;
 } else if (memo.APIVersion === 'legacy') {
-    memoUrl = memos + "/api/v1/memo?creatorId=" + memo.creatorId + "&rowStatus=NORMAL";
+    memoUrl = memos + `/api/v1/users:username?username=${memo.username}`;
 } else {
     throw new Error('Invalid APIVersion');
 }
