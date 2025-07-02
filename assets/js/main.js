@@ -4,13 +4,13 @@
 
 // Memos Start
 var memo = {
-    host: 'https://memos.xaox.cc/',
-    limit: '10',
+    host: 'https://memos.050815.xyz/',
+    limit: '1',
     creatorId: '15',
     domId: '#memos',
     username: 'kemiao',
     name: '克喵爱吃卤面',
-    APIVersion: 'lagacy',
+    APIVersion: 'new',
     language: 'zh-CN',
     total: true,
     doubanAPI: '',
