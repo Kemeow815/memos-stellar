@@ -5,8 +5,8 @@
 // Memos Start
 var memo = {
     host: 'https://memos.050815.xyz/',
-    limit: '1',
-    creatorId: '15',
+    limit: '10',
+    creatorId: '1',
     domId: '#memos',
     username: 'kemiao',
     name: '克喵爱吃卤面',
